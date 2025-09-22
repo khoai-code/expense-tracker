@@ -3,6 +3,15 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
+// Debug logging for production
+if (typeof window !== 'undefined') {
+  console.log('Supabase Config Check:', {
+    url: supabaseUrl ? 'Set' : 'Missing',
+    key: supabaseKey ? 'Set' : 'Missing',
+    urlValue: supabaseUrl
+  })
+}
+
 export const supabase = createClient(supabaseUrl, supabaseKey)
 
 export type Database = {
